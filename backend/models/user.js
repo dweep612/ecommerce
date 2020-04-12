@@ -1,6 +1,7 @@
 const mongoose = require("mongoose");
 const crypto = require("crypto");
-const uuidv1 = require("uuid/v1");
+// const uuidv1 = require("uuid/v1"); // Deprecated
+const { v1: uuidv1 } = require("uuid");
 
 const userSchema = new mongoose.Schema(
   {
@@ -62,6 +63,10 @@ userSchema
   });
 
 userSchema.methods = {
+  authenticate: function (plainpassword) {
+    return this.securePassword(plainpassword) === this.encry_password;
+  },
+
   securePassword: function (plainpassword) {
     if (!plainpassword) return "";
 
