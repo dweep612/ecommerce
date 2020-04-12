@@ -1,8 +1,14 @@
 require("dotenv").config();
 const express = require("express");
 const mongoose = require("mongoose");
+const bodyParser = require("body-parser");
+const cookieParser = require("cookie-parser");
+const cors = require("cors");
 
 const app = express();
+
+// Routes
+const authRoutes = require("./routes/auth");
 
 // DB Connection
 mongoose
@@ -14,9 +20,13 @@ mongoose
   .then(() => console.log("DB Connected!"))
   .catch(() => console.log("Failed to Connect DB"));
 
-app.get("/", (req, res) => {
-  res.send("Server Testing");
-});
+// Middleware
+app.use(bodyParser.json());
+app.use(cookieParser());
+app.use(cors());
+
+// My Routes
+app.use("/api", authRoutes);
 
 // Server Connection
 const port = process.env.PORT || 8000;
