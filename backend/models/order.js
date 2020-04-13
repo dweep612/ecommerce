@@ -4,7 +4,7 @@ const { ObjectId } = mongoose.Schema;
 const productCartSchema = new mongoose.Schema({
   product: {
     type: ObjectId,
-    reference: "Product",
+    ref: "Product",
   },
 
   name: String,
@@ -36,7 +36,7 @@ const orderSchema = new mongoose.Schema(
 
     user: {
       type: ObjectId,
-      reference: "User",
+      ref: "User",
     },
   },
   { timestamps: true }
