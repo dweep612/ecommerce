@@ -1,5 +1,11 @@
 body {
-  background-color: #47535e;
+  background-color: #343a40;
+}
+
+.btn,
+.jumbotron,
+.nav :hover {
+  border-radius: 0px;
 }
 
 .center {

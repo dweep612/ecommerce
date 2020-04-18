@@ -19,9 +19,9 @@ const Base = ({
         <h4>If you got any question, feel free to reach out!</h4>
         <button className="btn btn-warning btn-lg">Contact Us</button>
       </div>
-      <div className="container">
+      <div className="container text-center mt-2">
         <span className="text-muted">
-          An Amazing <span className="text-white">MERN</span> Bootcamp
+          An Amazing <span className="text-white">Ecommerce</span> Website
         </span>
       </div>
     </footer>
