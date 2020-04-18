@@ -34,6 +34,7 @@ export const signin = (user) => {
 export const authenticate = (data, next) => {
   if (typeof window != "undefined") {
     localStorage.setItem("jwt", JSON.stringify(data));
+    next();
   }
 };
 
@@ -45,13 +46,13 @@ export const signout = (next) => {
     return fetch(`${API}/signout`, {
       method: "GET",
     })
-      .then((response) => console.log("SignOut Successfully"))
+      .then((response) => console.log("SignOut Successful"))
       .catch((err) => console.log(err));
   }
 };
 
 export const isAuthenticated = () => {
-  if (typeof window == undefined) {
+  if (typeof window == "undefined") {
     return false;
   }
 
