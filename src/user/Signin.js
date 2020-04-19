@@ -107,7 +107,7 @@ const Signin = () => {
               />
             </div>
             <button onClick={onSubmit} className="btn btn-success btn-block">
-              Login
+              Signin
             </button>
           </form>
         </div>

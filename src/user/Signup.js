@@ -73,7 +73,7 @@ const Signup = () => {
               />
             </div>
             <button onClick={onSubmit} className="btn btn-success btn-block">
-              Submit
+              SignUp
             </button>
           </form>
         </div>
