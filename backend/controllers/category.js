@@ -17,7 +17,7 @@ exports.getCategoryById = (req, res, next, id) => {
 exports.createCategory = (req, res) => {
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array()[0].msg });
+    return res.status(422).json({ error: errors.array()[0].msg });
   }
 
   const category = new Category(req.body);
@@ -53,7 +53,7 @@ exports.updateCategory = (req, res) => {
 
   const errors = validationResult(req);
   if (!errors.isEmpty()) {
-    return res.status(422).json({ errors: errors.array()[0].msg });
+    return res.status(422).json({ error: errors.array()[0].msg });
   }
 
   category.name = req.body.name;
