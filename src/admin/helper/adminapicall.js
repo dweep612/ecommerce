@@ -25,7 +25,7 @@ export const getAllCategories = () => {
     .then((response) => {
       return response.json();
     })
-    .catch((errr) => console.log(err));
+    .catch((err) => console.log(err));
 };
 
 export const getCategory = (categoryId) => {
