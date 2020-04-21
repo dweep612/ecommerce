@@ -8,15 +8,16 @@ const CreateCategory = () => {
   const [name, setName] = useState("");
   const [error, setError] = useState(false);
   const [success, setSuccess] = useState(false);
+  const [redirect, setRedirect] = useState(false);
 
   const { user, token } = isAuthenticated();
 
   const goBack = () => (
-    <div className="mt-5">
-      <Link className="btn btn-sm btn-success mb-3" to="/admin/dashboard">
-        Admin Dashboard
-      </Link>
-    </div>
+    // <div className="mt-5">
+    <Link className="btn btn-md btn-info mb-3" to="/admin/dashboard">
+      Admin Dashboard
+    </Link>
+    // </div>
   );
 
   const handleChange = (event) => {
@@ -36,8 +37,17 @@ const CreateCategory = () => {
         setError("");
         setSuccess(true);
         setName("");
+        setRedirect(true);
       }
     });
+  };
+
+  const performRedirect = () => {
+    if (redirect) {
+      setTimeout(() => {
+        window.location = "/admin/dashboard";
+      }, 2000);
+    }
   };
 
   const successMessage = () => {
@@ -78,12 +88,13 @@ const CreateCategory = () => {
       description="Add new category for products"
       className="container bg-success p-4 rounded"
     >
-      <div className="row bg-white rounded">
+      {goBack()}
+      <div className="row bg-dark text-white rounded">
         <div className="col-md-8 offset-md-2">
           {successMessage()}
           {errorMessage()}
+          {performRedirect()}
           {categoryForm()}
-          {goBack()}
         </div>
       </div>
     </Base>

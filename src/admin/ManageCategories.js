@@ -35,7 +35,7 @@ const ManageCategories = () => {
   };
 
   return (
-    <Base title="Manage Categories" description="Manage all categories">
+    <Base title="Manage Categories" description="Manage all categories here">
       <Link className="btn btn-success" to="/admin/dashboard">
         <span>Admin Dashboard</span>
       </Link>
