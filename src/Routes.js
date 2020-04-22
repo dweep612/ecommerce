@@ -13,6 +13,7 @@ import UpdateCategory from "./admin/UpdateCategory";
 import CreateProduct from "./admin/CreateProduct";
 import ManageProducts from "./admin/ManageProducts";
 import UpdateProduct from "./admin/UpdateProduct";
+import Cart from "./core/Cart";
 
 const Routes = () => {
   return (
@@ -49,6 +50,7 @@ const Routes = () => {
           exact
           component={UpdateProduct}
         />
+        <Route path="/cart" exact component={Cart} />
       </Switch>
     </BrowserRouter>
   );

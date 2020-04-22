@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import ImageHelper from "./helper/ImageHelper";
 import { Redirect } from "react-router-dom";
+import { addItemToCart, removeItemFromCart } from "./helper/cartHelper";
 
 const Card = ({
   product,
@@ -17,11 +18,21 @@ const Card = ({
     : "Awesome Product Description";
   const cardPrice = product ? product.price : "0";
 
+  const addToCartBtn = () => {
+    addItemToCart(product, () => setRedirect(true));
+  };
+
+  const getRedirect = (redirect) => {
+    if (redirect) {
+      return <Redirect to="/cart" />;
+    }
+  };
+
   const showAddToCart = (addToCart) => {
     return (
       addToCart && (
         <button
-          // onClick={addToCart}
+          onClick={addToCartBtn}
           className="btn btn-block btn-outline-success mt-2 mb-2"
         >
           Add to Cart
@@ -35,8 +46,8 @@ const Card = ({
       removeFromCart && (
         <button
           onClick={() => {
-            // removeItemfromCart(product._id);
-            // setReload(!reload);
+            removeItemFromCart(product._id);
+            setReload(!reload);
           }}
           className="btn btn-block btn-outline-danger mt-2 mb-2"
         >
@@ -47,9 +58,10 @@ const Card = ({
   };
 
   return (
-    <div className="card text-white bg-dark border border-info ">
+    <div className="card text-white bg-dark border border-info mt-2">
       <div className="card-header lead">{cardTitle}</div>
       <div className="card-body">
+        {getRedirect(redirect)}
         <ImageHelper product={product} />
         <p className="lead bg-success font-weight-normal text-wrap">
           {cardDescription}
