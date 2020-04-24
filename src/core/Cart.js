@@ -3,6 +3,7 @@ import Base from "./Base";
 import Card from "./Card";
 import { loadCart } from "./helper/cartHelper";
 import StripeCheckout from "../paymentgateways/StripeCheckout";
+import BraintreeCheckout from "../paymentgateways/BraintreeCheckout";
 
 const Cart = () => {
   const [products, setProducts] = useState([]);
@@ -35,6 +36,11 @@ const Cart = () => {
         <div className="col-6">{loadAllProducts()}</div>
         <div className="col-6">
           <StripeCheckout
+            products={products}
+            setReload={setReload}
+            reload={reload}
+          />
+          <BraintreeCheckout
             products={products}
             setReload={setReload}
             reload={reload}

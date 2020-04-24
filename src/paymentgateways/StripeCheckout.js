@@ -125,9 +125,9 @@ const StripeCheckout = ({
 
   return (
     <div>
+      <h3 className="text-white mb-4">Total Amount: ${getFinalAmount()}</h3>
       {successMessage()}
       {errorMessage()}
-      <h3 className="text-white">Total Amount: ${getFinalAmount()}</h3>
       {showStripeButton()}
     </div>
   );
