@@ -3,10 +3,13 @@ import Base from "./Base";
 import "../style.css";
 import Card from "./Card";
 import { getProducts } from "./helper/coreapicalls";
+import { loadCart } from "./helper/cartHelper";
 
 const Home = () => {
   const [products, setProducts] = useState([]);
   const [error, setError] = useState(false);
+
+  loadCart();
 
   const loadAllProducts = () => {
     getProducts().then((data) => {

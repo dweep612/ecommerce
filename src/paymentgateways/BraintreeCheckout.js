@@ -17,12 +17,14 @@ const BraintreeCheckout = ({
     clientToken: null,
     error: "",
     instance: {},
+    redirect: false,
   });
 
-  const { successPayment, error } = info;
+  const { successPayment, error, redirect } = info;
 
   const userId = isAuthenticated() && isAuthenticated().user._id;
   const userToken = isAuthenticated() && isAuthenticated().token;
+  const userRole = isAuthenticated() && isAuthenticated().user.role;
 
   const getFinalAmount = () => {
     let amount = 0;
@@ -119,6 +121,7 @@ const BraintreeCheckout = ({
                 ...info,
                 successPayment: response.success,
                 loading: false,
+                redirect: true,
               });
 
               setReload(!reload);
@@ -168,6 +171,20 @@ const BraintreeCheckout = ({
     );
   };
 
+  const performRedirect = () => {
+    if (redirect) {
+      if (userRole === 1) {
+        setTimeout(() => {
+          window.location = "/admin/dashboard";
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          window.location = "/user/dashboard";
+        }, 2000);
+      }
+    }
+  };
+
   const showBraintreeButton = () => {
     return isAuthenticated() ? (
       <button className="btn btn-success" onClick={showbtndropIn}>
@@ -185,6 +202,7 @@ const BraintreeCheckout = ({
     <div>
       {successMessage()}
       {errorMessage()}
+      {performRedirect()}
       {showbtndropIn()}
     </div>
   );

@@ -16,12 +16,14 @@ const StripeCheckout = ({
     success: "",
     error: "",
     address: "",
+    redirect: false,
   });
 
-  const { success, error } = data;
+  const { success, error, redirect } = data;
 
   const userToken = isAuthenticated() && isAuthenticated().token;
   const userId = isAuthenticated() && isAuthenticated().user._id;
+  const userRole = isAuthenticated() && isAuthenticated().user.role;
 
   const getFinalAmount = () => {
     let amount = 0;
@@ -66,7 +68,7 @@ const StripeCheckout = ({
           });
 
           setReload(!reload);
-          setData({ ...data, success: "Payment Successful!" });
+          setData({ ...data, success: "Payment Successful!", redirect: true });
         } else {
           setData({ ...data, error: "Transaction failed! Try Again!" });
         }
@@ -104,10 +106,24 @@ const StripeCheckout = ({
     );
   };
 
+  const performRedirect = () => {
+    if (redirect) {
+      if (userRole === 1) {
+        setTimeout(() => {
+          window.location = "/admin/dashboard";
+        }, 2000);
+      } else {
+        setTimeout(() => {
+          window.location = "/user/dashboard";
+        }, 2000);
+      }
+    }
+  };
+
   const showStripeButton = () => {
     return isAuthenticated() ? (
       <StripeCheckoutBtn
-        stripeKey="pk_test_publishable_key"
+        stripeKey={process.env.REACT_APP_KEY}
         token={makePayment}
         amount={getFinalAmount() * 100}
         name="Buy Tshirts"
@@ -128,6 +144,7 @@ const StripeCheckout = ({
       <h3 className="text-white mb-4">Total Amount: ${getFinalAmount()}</h3>
       {successMessage()}
       {errorMessage()}
+      {performRedirect()}
       {showStripeButton()}
     </div>
   );
