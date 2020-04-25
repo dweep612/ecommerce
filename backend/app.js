@@ -18,12 +18,15 @@ const braintreeRoutes = require("./routes/braintreepayment");
 
 // DB Connection
 mongoose
-  .connect(process.env.DATABASE, {
-    useNewUrlParser: true,
-    useCreateIndex: true,
-    useUnifiedTopology: true,
-    useFindAndModify: true,
-  })
+  .connect(
+    `mongodb+srv://${process.env.DB_NAME}:${process.env.DB_PASS}@${process.env.DB_PROJECT}-xi8tq.mongodb.net/${process.env.DB_PROJECT}?retryWrites=true&w=majority`,
+    {
+      useNewUrlParser: true,
+      useCreateIndex: true,
+      useUnifiedTopology: true,
+      useFindAndModify: true,
+    }
+  )
   .then(() => console.log("DB Connected!"))
   .catch(() => console.log("Failed to Connect DB"));
 

@@ -57,10 +57,12 @@ const StripeCheckout = ({
         if (status === 200) {
           const orderData = {
             products: products,
+            // transaction_id: response.object.id,
+            // amount: response.object.amount,
           };
 
           createOrder(userId, userToken, orderData);
-          // .then((data) => console.log(data))
+          // .then((data) => console.log(data));
           // .catch((err) => console.log(err));
 
           cartEmpty(() => {
