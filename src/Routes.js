@@ -51,6 +51,9 @@ const Routes = () => {
           component={UpdateProduct}
         />
         <Route path="/cart" exact component={Cart} />
+        <Route path="*">
+          <Redirect to="/" />
+        </Route>
       </Switch>
     </BrowserRouter>
   );

@@ -46,7 +46,7 @@ const CreateCategory = () => {
     if (redirect) {
       setTimeout(() => {
         window.location = "/admin/dashboard";
-      }, 2000);
+      }, 1000);
     }
   };
 

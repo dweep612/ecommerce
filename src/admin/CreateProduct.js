@@ -85,7 +85,7 @@ const CreateProduct = () => {
     if (getRedirect) {
       setTimeout(() => {
         window.location = "/admin/dashboard";
-      }, 2000);
+      }, 1000);
     }
   };
 

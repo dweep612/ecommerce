@@ -47,7 +47,7 @@ const AdminDashboard = () => {
     return (
       <div className="card mb-4">
         <h4 className="card-header">Admin Information</h4>
-        <ui className="list-group">
+        <ul className="list-group">
           <li className="list-group-item">
             <span className="badge badge-success mr-2">Name: </span>
             {name}
@@ -59,7 +59,7 @@ const AdminDashboard = () => {
           <li className="list-group-item">
             <span className="badge badge-danger">Admin Area </span>
           </li>
-        </ui>
+        </ul>
       </div>
     );
   };

@@ -176,11 +176,11 @@ const BraintreeCheckout = ({
       if (userRole === 1) {
         setTimeout(() => {
           window.location = "/admin/dashboard";
-        }, 2000);
+        }, 1000);
       } else {
         setTimeout(() => {
           window.location = "/user/dashboard";
-        }, 2000);
+        }, 1000);
       }
     }
   };

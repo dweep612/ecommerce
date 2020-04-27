@@ -86,6 +86,7 @@ const Menu = ({ history }) => (
                 history.push("/");
               });
             }}
+            to="undefined"
           >
             SignOut
           </Link>
