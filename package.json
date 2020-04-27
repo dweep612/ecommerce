@@ -31,7 +31,8 @@
     "uuid": "^7.0.3"
   },
   "scripts": {
-    "start": "react-scripts start",
+    "server": "cd ./backend && node app.js",
+    "start": "concurrently \"npm run server\" \"react-scripts start\"",
     "build": "react-scripts build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
@@ -51,6 +52,7 @@
       "last 1 safari version"
     ]
   },
+  "proxy": "http://localhost:8000",
   "devDependencies": {
     "nodemon": "^2.0.3"
   },
