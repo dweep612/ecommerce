@@ -57,10 +57,12 @@ const StripeCheckout = ({
         if (status === 200) {
           const orderData = {
             products: products,
+            // transaction_id: response.object.id,
+            // amount: response.object.amount,
           };
 
           createOrder(userId, userToken, orderData);
-          // .then((data) => console.log(data))
+          // .then((data) => console.log(data));
           // .catch((err) => console.log(err));
 
           cartEmpty(() => {
@@ -111,11 +113,11 @@ const StripeCheckout = ({
       if (userRole === 1) {
         setTimeout(() => {
           window.location = "/admin/dashboard";
-        }, 2000);
+        }, 1000);
       } else {
         setTimeout(() => {
           window.location = "/user/dashboard";
-        }, 2000);
+        }, 1000);
       }
     }
   };

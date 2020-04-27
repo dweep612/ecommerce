@@ -1,4 +1,4 @@
-require("dotenv").config();
+require("dotenv").config({ path: "../.env" });
 const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
@@ -42,6 +42,6 @@ app.use("/api", stripeRoutes);
 app.use("/api", braintreeRoutes);
 
 // Server Connection
-const port = process.env.PORT || 8000;
+const port = process.env.BACKEND_PORT || 8000;
 
 app.listen(port, () => console.log(`Server Running at Port ${port}`));
