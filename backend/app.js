@@ -48,11 +48,7 @@ app.use("/api", orderRoutes);
 app.use("/api", stripeRoutes);
 app.use("/api", braintreeRoutes);
 
-if (process.env.NODE_ENV === "production") {
-  app.use(express.static(pathToBuild));
-}
-
-// app.use(express.static(pathToBuild)); // Used for local testing
+app.use(express.static(pathToBuild));
 
 app.get("*", (req, res) => {
   res.sendFile(pathToBuildIndex);
