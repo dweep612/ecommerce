@@ -4,7 +4,7 @@
   "description": "backend of application",
   "main": "app.js",
   "scripts": {
-    "start": "nodemon app.js"
+    "start": "node app.js"
   },
   "author": "Dweep Panchal",
   "license": "ISC",
