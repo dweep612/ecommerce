@@ -4,7 +4,8 @@
   "description": "backend of application",
   "main": "app.js",
   "scripts": {
-    "start": "node app.js"
+    "start": "node app.js",
+    "heroku-postbuild": "cd client && npm install && npm run build"
   },
   "author": "Dweep Panchal",
   "license": "ISC",
@@ -28,6 +29,7 @@
     "nodemon": "^2.0.3"
   },
   "engines": {
-    "node": "10.x"
+    "node": "10.16.0",
+    "npm": "6.9.0"
   }
 }
