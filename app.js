@@ -54,4 +54,4 @@ app.get("*", (req, res) => {
 // Server Connection
 const port = process.env.PORT || 8000;
 
-app.listen(port, () => console.log(`Server Running at Port ${port}`));
+app.listen(port, () => console.log(`Server Running at ${port}`));
