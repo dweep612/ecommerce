@@ -18,7 +18,7 @@ const stripeRoutes = require("./routes/stripepayment");
 const braintreeRoutes = require("./routes/braintreepayment");
 
 var pathToBuild = path.join(__dirname, "../build");
-console.log(pathToBuild);
+var pathToBuildIndex = path.join(__dirname, "../build/index.html");
 
 // DB Connection
 mongoose
@@ -51,6 +51,12 @@ app.use("/api", braintreeRoutes);
 if (process.env.NODE_ENV === "production") {
   app.use(express.static(pathToBuild));
 }
+
+// app.use(express.static(pathToBuild)); // Used for local testing
+
+app.get("*", (req, res) => {
+  res.sendFile(pathToBuildIndex);
+});
 
 // Server Connection
 const port = process.env.PORT || 8000;
