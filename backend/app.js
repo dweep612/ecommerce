@@ -4,6 +4,7 @@ const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cookieParser = require("cookie-parser");
 const cors = require("cors");
+const path = require("path");
 
 const app = express();
 
@@ -15,6 +16,9 @@ const productRoutes = require("./routes/product");
 const orderRoutes = require("./routes/order");
 const stripeRoutes = require("./routes/stripepayment");
 const braintreeRoutes = require("./routes/braintreepayment");
+
+var pathToBuild = path.join(__dirname, "../build");
+var pathToBuildIndex = path.join(__dirname, "../build/index.html");
 
 // DB Connection
 mongoose
@@ -44,7 +48,13 @@ app.use("/api", orderRoutes);
 app.use("/api", stripeRoutes);
 app.use("/api", braintreeRoutes);
 
+app.use(express.static(pathToBuild));
+
+app.get("*", (req, res) => {
+  res.sendFile(pathToBuildIndex);
+});
+
 // Server Connection
-const port = process.env.BACKEND_PORT || 8000;
+const port = process.env.PORT || 8000;
 
 app.listen(port, () => console.log(`Server Running at Port ${port}`));
